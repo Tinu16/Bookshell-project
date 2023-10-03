@@ -9,35 +9,39 @@
 <br>
     <form id="pan-verification-form" align="center">
         <h2>Permanent Account Number Verification</h2>
-        <label for="pan_number">Enter PAN Number:</label>
-        <input type="text" id="pan_number" name="pan_number" onInput="validatePAN()">
+       <div> 
+            <label for="pan_number">Enter PAN Number:</label>
+            <input type="text" id="pan_number" name="pan_number" onInput="validatePAN()">
+            <button type="submit">Submit</button>
+        </div>   
+       <div>
         <span id="pan_error" class="pan_error"></span>
-        <button type="submit">Submit</button>
+       </div>
     </form>
 
     <script>
-        function validatePAN()() {
+        function validatePAN() {
             var pan = document.getElementById('pan_number').value;
             var pan_error = document.getElementById('pan_error');
       
-            var panPattern = /^[A-Z]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
+            var panPattern = /^([A-Z]{5})([0-9]{4})[A-Z]{1}$/.test(pan);
             let message = "";
   
-          if (!emailPattern) 
+          if (!panPattern) 
               {
-                  message += "Enter a valid email.<br>";
+                  message += "Enter a valid PAN number.<br>";
               }
          
-              email_error.innerHTML = message;
+              pan_error.innerHTML = message;
   
-          if (emailPattern) 
+          if (panPattern) 
               {
-                  email_error.style.color = "green";
-                  email_error.textContent = "Password is valid!";
+                pan_error.style.color = "green";
+                pan_error.textContent = "PAN is valid!";
               } 
           else 
               {
-                  email_error.style.color = "red";
+                pan_error.style.color = "red";
               }
         }
     </script>

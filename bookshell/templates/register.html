@@ -38,11 +38,11 @@
                     </div>
                     
                     <div class="card-body">
-                        <form id="registrationForm" action="#" method="POST">
+                        <form id="registrationForm" action="" method="POST">
                             {% csrf_token %}
                             <div class="form-group">
-                                <input type="text" class="form-control" id="business_name" name="business_name"placeholder="Business name">
-                                <span id="business_name_error" class="error"></span>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Your name" onInput="validateUsername(this.value)">
+                                <span id="username_error" class="error"></span>
                             </div>
 
                             <div class="form-group">
@@ -81,7 +81,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-      
+        function validateUsername(input) 
+        {
+   
+            const username = document.getElementById('username');
+            const nameError = document.getElementById('username_error');
+
+            const lengthValid = /(.{2,25}$)/.test(password);
+            const namePattern=(/^[^\s]{1}[A-Za-z\s]+$/.test(input)) 
+            let message="";          
+                if (input.trim() == "") 
+                {
+                  nameError.style.color = "red";
+                  nameError.textContent = "Name cannot be empty.";
+                } 
+                if (!namePattern) 
+                {
+                    nameError.style.color = "red";
+                  nameError.textContent = "Name can only contain letters and spaces.";
+                } 
+                if(namePattern)
+                {
+                  nameError.textContent = ""; // Clear any error message if the input is valid
+                }
+              
+        }     
         function validateEmail() {
           var email = document.getElementById('email').value;
           var email_error = document.getElementById('email_error');
@@ -99,7 +123,7 @@
         if (emailPattern) 
             {
                 email_error.style.color = "green";
-                email_error.textContent = "Password is valid!";
+                email_error.textContent = "Email is valid!";
             } 
         else 
             {
