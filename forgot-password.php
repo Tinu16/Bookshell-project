@@ -1,7 +1,7 @@
 <?php 
+    session_start();
     include("includes/header.php");
-   ?>
-
+?>
 
 <body class="bg-gradient-primary">
 
@@ -16,23 +16,21 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-password-image" style="background-image: url('img/forgot-password.jpeg')"></div>
+                            <div class="col-lg-6 d-none d-lg-block bg-password-image" style="background-image: url('img/forgot-password.jpeg'); background-size:320px;  background-repeat: no-repeat;"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-2">Forgot Your Password?</h1>
-                                        <p class="mb-4">We get it, stuff happens. Just enter your email address below
-                                            and we'll send you a link to reset your password!</p>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="POST" action="reset-passwordcode.php">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
-                                        <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                            Reset Password
-                                        </a>
+                                        <div class="col-sm-13">
+                                        <input type="submit" name="change_btn" class="btn btn-primary btn-user btn-block" value="Reset Password">
+                                        </div>
                                     </form>
                                     <hr>
                                     <div class="text-center">
